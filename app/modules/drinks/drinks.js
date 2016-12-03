@@ -56,6 +56,7 @@ class Drinks extends Component {
     // PUBLIC
     postDrink() {
         if (!__DEV__) {
+            // TODO: Spinner until ready.
             request.post(`${config.api_root}${config.api_drinks}`)
                 .then(() => {
                     this.setState({
