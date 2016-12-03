@@ -7,9 +7,11 @@ LifeApi is a collection of "mini-apps" that track different parts of my life. Al
 ### GETTING STARTED ###
 
 1. Clone repo.
-2. Follow steps in "Getting Started" section of the [React Native](https://facebook.github.io/react-native/docs/getting-started.html#content) site.
-3. Create `config.json` file from the `config.json.ex` example file, modify fields accordingly.
-4. All set!
+2. Install [Node](https://nodejs.org/en/).
+3. Follow steps in "Getting Started" section of the [React Native](https://facebook.github.io/react-native/docs/getting-started.html#content) site.
+4. Run `npm install`.
+5. Create `config.json` file from the `config.json.ex` example file, modify fields accordingly.
+6. All set!
 
 ### NOTES ###
 * Only tested on iOS.
