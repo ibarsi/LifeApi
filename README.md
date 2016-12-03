@@ -1,9 +1,8 @@
-### LINKS ###
+## README ##
 
-This mobile React Native based app is part of a collection of software for a personal side project, inspired by
- [Jane Kim](http://janekim.me/)'s own project by the same name, aimed at tracking different aspects of my personal life.
+This mobile React Native based app is part of a collection of software for a personal side project, inspired by [Jane Kim](http://janekim.me/)'s own project by the same name, aimed at tracking different aspects of my personal life.
 
- LifeApi is a collection of "mini-apps" that track different parts of my life. All data is pulled/pushed via a back-end API, created and hosted by me, repo found at [life-api-server](https://bitbucket.org/ibarsi/life-api).
+LifeApi is a collection of "mini-apps" that track different parts of my life. All data is pulled/pushed via a back-end API, created and hosted by me, repo found at [life-api-server](https://github.com/ibarsi/life-api-server).
 
 ### GETTING STARTED ###
 
