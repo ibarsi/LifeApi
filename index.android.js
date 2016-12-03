@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-class LifeApi extends Component {
+export default class LifeApi extends Component {
   render() {
     return (
       <View style={styles.container}>

@@ -11,11 +11,21 @@ import error from '../../helpers/error_helper';
 import request from '../../helpers/request_helper';
 import config from '../../../config.json';
 
-class Drinks extends Component {
-    static propTypes = {
-        navigator: PropTypes.object.isRequired
+const styles = StyleSheet.create({
+    drink_count_label: {
+        paddingTop: 20,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 15
+    },
+    drink_count_value: {
+        paddingTop: 80,
+        textAlign: 'center',
+        fontWeight: 'bold'
     }
+});
 
+class Drinks extends Component {
     constructor(props) {
         super(props);
 
@@ -30,9 +40,7 @@ class Drinks extends Component {
             .then(drinks => {
                 let now = moment();
 
-                let todays_drinks = drinks.filter(function (drink) {
-                    return now.diff(drink.date_consumed, 'days') === 0;
-                });
+                let todays_drinks = drinks.filter(drink => now.diff(drink.date_consumed, 'days') === 0 );
 
                 this.setState({
                     todays_drinks: todays_drinks.length
@@ -67,40 +75,38 @@ class Drinks extends Component {
     // PRIVATE
     _getTodaysDrinks() {
         return request.get(`${config.api_root}${config.api_drinks}`)
-            .then(response => {
-                return response.body;
-            });
+            .then(response => response.body);
     }
 
     _setDrinkBadgeStyle(drink_count) {
-        let styles = {};
+        let badge_styles = {};
 
         if (drink_count <= 0) {
-            styles = {
+            badge_styles = {
                 fontSize: 20,
                 color: 'black'
             };
         }
         else if (drink_count <= 3) {
-            styles = {
+            badge_styles = {
                 fontSize: 30,
                 color: 'green'
             };
         }
         else if (drink_count <= 6) {
-            styles = {
+            badge_styles = {
                 fontSize: 40,
                 color: 'orange'
             };
         }
         else {
-            styles = {
+            badge_styles = {
                 fontSize: 50,
                 color: 'red'
             };
         }
 
-        return styles;
+        return badge_styles;
     }
 
     _back() {
@@ -139,19 +145,5 @@ class Drinks extends Component {
 Drinks.propTypes = {
     navigator: PropTypes.object.isRequired
 };
-
-const styles = StyleSheet.create({
-    drink_count_label: {
-        paddingTop: 20,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 15
-    },
-    drink_count_value: {
-        paddingTop: 80,
-        textAlign: 'center',
-        fontWeight: 'bold'
-    }
-});
 
 export default Drinks;

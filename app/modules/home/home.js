@@ -12,7 +12,9 @@ class Home extends Component {
         return (
             <Container>
                 <Header>
-                    <Title>Home</Title>
+                    <Title>
+                        Home
+                    </Title>
                 </Header>
 
                 <Content>
