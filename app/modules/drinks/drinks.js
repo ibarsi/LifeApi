@@ -95,7 +95,6 @@ class Drinks extends Component {
                 .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
         }
         else {
-            // TODO: Temp debug mode.
             this.setState({
                 todays_drinks: this.state.todays_drinks + 1
             });
@@ -114,10 +113,21 @@ class Drinks extends Component {
                 {
                     text: 'OK',
                     onPress: () => {
-                        if (!__DEV__) {
-                            // TODO
+                        if (!__DEV__ && this.state.todays_drinks > 0) {
+                            this.setState({
+                                loading: true
+                            });
+
+                            Promise.all([request.del(`${config.api_root}${config.api_drinks}`), delay(500)])
+                                .then(() => {
+                                    this.setState({
+                                        todays_drinks: this.state.todays_drinks - 1,
+                                        loading: false
+                                    });
+                                })
+                                .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
                         }
-                        else {
+                        else if (this.state.todays_drinks > 0) {
                             this.setState({
                                 todays_drinks: this.state.todays_drinks - 1
                             });
@@ -193,7 +203,7 @@ class Drinks extends Component {
                 </Content>
 
                 <View>
-                    <Button block danger style={ styles.remove_button } onPress={ this._removeDrink.bind(this) }>
+                    <Button block danger disabled={ this.state.loading || this.state.todays_drinks <= 0 } style={ styles.remove_button } onPress={ this._removeDrink.bind(this) }>
                         Remove
                     </Button>
                 </View>
