@@ -5,7 +5,7 @@
 // @flow
 
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert, View } from 'react-native';
 import { Container, Header, Content, Title, Button, Icon, Text, Spinner } from 'native-base';
 
 import moment from 'moment';
@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
         paddingTop: 80,
         textAlign: 'center',
         fontWeight: 'bold'
+    },
+    remove_button: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0
     }
 });
 
@@ -67,8 +73,13 @@ class Drinks extends Component {
          // TODO: Would be nice if AJAX request could be aborted on dismount.
     }
 
-    // PUBLIC
-    postDrink() {
+    // PRIVATE
+    _getTodaysDrinks() {
+        return request.get(`${config.api_root}${config.api_drinks}`)
+            .then(response => response.body);
+    }
+
+    _postDrink() {
         if (!__DEV__) {
             this.setState({
                 loading: true
@@ -91,10 +102,30 @@ class Drinks extends Component {
         }
     }
 
-    // PRIVATE
-    _getTodaysDrinks() {
-        return request.get(`${config.api_root}${config.api_drinks}`)
-            .then(response => response.body);
+    _removeDrink() {
+        Alert.alert(
+            'Remove Drink',
+            'Are you sure you want to remove a drink?',
+            [
+                {
+                    text: 'Cancel',
+                    style: 'cancel'
+                },
+                {
+                    text: 'OK',
+                    onPress: () => {
+                        if (!__DEV__) {
+                            // TODO
+                        }
+                        else {
+                            this.setState({
+                                todays_drinks: this.state.todays_drinks - 1
+                            });
+                        }
+                    }
+                }
+            ]
+        );
     }
 
     _setDrinkBadgeStyle(drink_count) {
@@ -128,10 +159,6 @@ class Drinks extends Component {
         return badge_styles;
     }
 
-    _back() {
-        this.props.navigator.pop();
-    }
-
     render() {
         return (
             <Container>
@@ -146,7 +173,7 @@ class Drinks extends Component {
                 </Header>
 
                 <Content>
-                    <Button block large disabled={ this.state.loading } onPress={ this.postDrink.bind(this) }>
+                    <Button block large disabled={ this.state.loading } onPress={ this._postDrink.bind(this) }>
                         <Text style={ styles.drink_button }>
                             DRINK!
                         </Text>
@@ -164,6 +191,12 @@ class Drinks extends Component {
                         </Text>
                     }
                 </Content>
+
+                <View>
+                    <Button block danger style={ styles.remove_button } onPress={ this._removeDrink.bind(this) }>
+                        Remove
+                    </Button>
+                </View>
             </Container>
         );
     }
