@@ -1,3 +1,7 @@
+/* ==================================================
+   REQUEST HELPER
+================================================== */
+
 import superagent from 'superagent';
 import superagent_promise from 'superagent-promise';
 
