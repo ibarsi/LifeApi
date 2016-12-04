@@ -2,16 +2,21 @@
 
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, Header, Content, Title, Button, Icon, Text } from 'native-base';
+import { Container, Header, Content, Title, Button, Icon, Text, Spinner } from 'native-base';
 
 import moment from 'moment';
 
-import DrinkButton from './drink_button';
 import logger from '../../helpers/logger_helper';
 import request from '../../helpers/request_helper';
+import promise from '../../helpers/promise_helper';
 import config from '../../../config.json';
 
 const styles = StyleSheet.create({
+    drink_button: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white'
+    },
     drink_count_label: {
         paddingTop: 20,
         textAlign: 'center',
@@ -36,6 +41,10 @@ class Drinks extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+            loading: true
+        });
+
         this._getTodaysDrinks()
             .then(drinks => {
                 let today = moment().startOf('day');
@@ -43,7 +52,8 @@ class Drinks extends Component {
                 let todays_drinks = drinks.filter(drink => today.diff(moment(drink.date_consumed).startOf('day').format(), 'days') === 0 );
 
                 this.setState({
-                    todays_drinks: todays_drinks.length
+                    todays_drinks: todays_drinks.length,
+                    loading: false
                 });
             })
             .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
@@ -56,11 +66,15 @@ class Drinks extends Component {
     // PUBLIC
     postDrink() {
         if (!__DEV__) {
-            // TODO: Spinner until ready.
-            request.post(`${config.api_root}${config.api_drinks}`)
+            this.setState({
+                loading: true
+            });
+
+            Promise.all([request.post(`${config.api_root}${config.api_drinks}`), promise.delay(500)])
                 .then(() => {
                     this.setState({
-                        todays_drinks: this.state.todays_drinks + 1
+                        todays_drinks: this.state.todays_drinks + 1,
+                        loading: false
                     });
                 })
                 .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
@@ -128,15 +142,23 @@ class Drinks extends Component {
                 </Header>
 
                 <Content>
-                    <DrinkButton drink_callback={ this.postDrink.bind(this) } />
+                    <Button block large disabled={ this.state.loading } onPress={ this.postDrink.bind(this) }>
+                        <Text style={ styles.drink_button }>
+                            DRINK!
+                        </Text>
+                    </Button>
 
                     <Text style={ styles.drink_count_label }>
                         Total Drinks Today:
                     </Text>
 
-                    <Text style={ [styles.drink_count_value, this._setDrinkBadgeStyle(this.state.todays_drinks)] }>
-                        { this.state.todays_drinks }
-                    </Text>
+                    { this.state.loading ?
+                        <Spinner color="blue" />
+                        :
+                        <Text style={ [styles.drink_count_value, this._setDrinkBadgeStyle(this.state.todays_drinks)] }>
+                            { this.state.todays_drinks }
+                        </Text>
+                    }
                 </Content>
             </Container>
         );
