@@ -8,7 +8,7 @@ import moment from 'moment';
 
 import logger from '../../helpers/logger_helper';
 import request from '../../helpers/request_helper';
-import promise from '../../helpers/promise_helper';
+import { delay } from '../../helpers/promise_helper';
 import config from '../../../config.json';
 
 const styles = StyleSheet.create({
@@ -70,7 +70,7 @@ class Drinks extends Component {
                 loading: true
             });
 
-            Promise.all([request.post(`${config.api_root}${config.api_drinks}`), promise.delay(500)])
+            Promise.all([request.post(`${config.api_root}${config.api_drinks}`), delay(500)])
                 .then(() => {
                     this.setState({
                         todays_drinks: this.state.todays_drinks + 1,
