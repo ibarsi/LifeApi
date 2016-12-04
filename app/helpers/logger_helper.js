@@ -1,7 +1,7 @@
 import { Alert } from 'react-native';
 
-const error_helper = {
-    handler(title, message, stacktrace) {
+const logger = {
+    error(title, message, stacktrace) {
         if (!__DEV__) {
             Alert.alert(
                 title,
@@ -17,4 +17,4 @@ const error_helper = {
     }
 };
 
-export default error_helper;
+export default logger;

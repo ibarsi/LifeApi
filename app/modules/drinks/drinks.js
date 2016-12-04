@@ -7,7 +7,7 @@ import { Container, Header, Content, Title, Button, Icon, Text } from 'native-ba
 import moment from 'moment';
 
 import DrinkButton from './drink_button';
-import error from '../../helpers/error_helper';
+import logger from '../../helpers/logger_helper';
 import request from '../../helpers/request_helper';
 import config from '../../../config.json';
 
@@ -38,15 +38,15 @@ class Drinks extends Component {
     componentDidMount() {
         this._getTodaysDrinks()
             .then(drinks => {
-                let now = moment();
+                let today = moment().startOf('day');
 
-                let todays_drinks = drinks.filter(drink => now.diff(drink.date_consumed, 'days') === 0 );
+                let todays_drinks = drinks.filter(drink => today.diff(moment(drink.date_consumed).startOf('day').format(), 'days') === 0 );
 
                 this.setState({
                     todays_drinks: todays_drinks.length
                 });
             })
-            .catch(exception => error.handler('Crap!', 'Server\'s dead, go home and fix it.', exception));
+            .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
     }
 
     componentWillUnmount() {
@@ -63,7 +63,7 @@ class Drinks extends Component {
                         todays_drinks: this.state.todays_drinks + 1
                     });
                 })
-                .catch(exception => error.handler('Crap!', 'Server\'s dead, go home and fix it.', exception));
+                .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
         }
         else {
             // TODO: Temp debug mode.

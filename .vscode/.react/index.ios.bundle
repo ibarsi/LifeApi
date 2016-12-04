@@ -119403,7 +119403,7 @@ var _nativeBase=require(554 /* native-base */);
 var _moment=require(673 /* moment */);var _moment2=babelHelpers.interopRequireDefault(_moment);
 
 var _drink_button=require(674 /* ./drink_button */);var _drink_button2=babelHelpers.interopRequireDefault(_drink_button);
-var _error_helper=require(675 /* ../../helpers/error_helper */);var _error_helper2=babelHelpers.interopRequireDefault(_error_helper);
+var _logger_helper=require(684 /* ../../helpers/logger_helper */);var _logger_helper2=babelHelpers.interopRequireDefault(_logger_helper);
 var _request_helper=require(676 /* ../../helpers/request_helper */);var _request_helper2=babelHelpers.interopRequireDefault(_request_helper);
 var _config=require(683 /* ../../../config.json */);var _config2=babelHelpers.interopRequireDefault(_config);
 
@@ -119434,15 +119434,15 @@ max_drinks:10};return _this;
 {var _this2=this;
 this._getTodaysDrinks().
 then(function(drinks){
-var now=(0,_moment2.default)();
+var today=(0,_moment2.default)().startOf('day');
 
-var todays_drinks=drinks.filter(function(drink){return now.diff(drink.date_consumed,'days')===0;});
+var todays_drinks=drinks.filter(function(drink){return today.diff((0,_moment2.default)(drink.date_consumed).startOf('day').format(),'days')===0;});
 
 _this2.setState({
 todays_drinks:todays_drinks.length});
 
 }).
-catch(function(exception){return _error_helper2.default.handler('Crap!','Server\'s dead, go home and fix it.',exception);});
+catch(function(exception){return _logger_helper2.default.error('Crap!','Server\'s dead, go home and fix it.',exception);});
 }},{key:'componentWillUnmount',value:function componentWillUnmount()
 
 {
@@ -119459,7 +119459,7 @@ _this3.setState({
 todays_drinks:_this3.state.todays_drinks+1});
 
 }).
-catch(function(exception){return _error_helper2.default.handler('Crap!','Server\'s dead, go home and fix it.',exception);});
+catch(function(exception){return _logger_helper2.default.error('Crap!','Server\'s dead, go home and fix it.',exception);});
 }else
 {
 
@@ -123874,10 +123874,10 @@ drink_callback:_react.PropTypes.func.isRequired};exports.default=
 
 DrinkButton;
 }, 674, null, "LifeApi/app/modules/drinks/drink_button.js");
-__d(/* LifeApi/app/helpers/error_helper.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require(12 /* react-native */);
+__d(/* LifeApi/app/helpers/logger_helper.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require(12 /* react-native */);
 
-var error_helper={
-handler:function handler(title,message,stacktrace){
+var logger={
+error:function error(title,message,stacktrace){
 if(!__DEV__){
 _reactNative.Alert.alert(
 title,
@@ -123893,8 +123893,8 @@ console.error(title,message,stacktrace);
 }};exports.default=
 
 
-error_helper;
-}, 675, null, "LifeApi/app/helpers/error_helper.js");
+logger;
+}, 684, null, "LifeApi/app/helpers/logger_helper.js");
 __d(/* LifeApi/app/helpers/request_helper.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _superagent=require(677 /* superagent */);var _superagent2=babelHelpers.interopRequireDefault(_superagent);
 var _superagentPromise=require(682 /* superagent-promise */);var _superagentPromise2=babelHelpers.interopRequireDefault(_superagentPromise);
 
