@@ -22,6 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		1EEF3DE4218C42C78E53FD3B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A80AE64D3BD741F490BF87CB /* libz.tbd */; };
 		27AE778E2B794FFE86C6E170 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1464C4B860264E9FB2BB5C06 /* Entypo.ttf */; };
 		429BCD5A523C42BCAE2E5656 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFF02B1D74A94008B9B52753 /* SF-UI-Text-Regular.otf */; };
 		454D33FEAB7A456690B483F2 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F41C8E8359E148AF97274B5F /* Roboto_medium.ttf */; };
@@ -37,6 +38,7 @@
 		91CC0ABDEF3A482DA5CD9DC0 /* Microsoft Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E103F2E979134A23AD438909 /* Microsoft Sans Serif.ttf */; };
 		96E3AB38A6E241B498D16C03 /* Courier New.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E38144D316A443E829F39E6 /* Courier New.ttf */; };
 		9DB5F6C4660C42519A90ABE1 /* Comic Sans MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7FCDE8656A043C392E80A2B /* Comic Sans MS.ttf */; };
+		A6E760F89C504EDC8CACF769 /* libBugsnagReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E0939F7614AC1A5E13D51 /* libBugsnagReactNative.a */; };
 		B594006938E747EAA75B38E9 /* Times New Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDD67852D05B416FB7C81D66 /* Times New Roman.ttf */; };
 		B88E379D68584339AF063AD2 /* Georgia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A21B1442706C4715B2563279 /* Georgia.ttf */; };
 		B8B69276520242109225F9B3 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7E948837460417284B6412D /* Octicons.ttf */; };
@@ -139,6 +141,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		91AA43321E0B6C6400D48D4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD9DCA5508664A7BA7A02D3A /* BugsnagReactNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8AD256131D6DE5F600C7D842;
+			remoteInfo = BugsnagReactNative;
+		};
 		91D98C5E1DF37DDE00D97C5B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -230,7 +239,10 @@
 		8CA868E3A90C41748CCBA2E1 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		8D37110F6D3743909E29E3FB /* Arial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Arial.ttf; path = "../node_modules/native-base/Fonts/Arial.ttf"; sourceTree = "<group>"; };
 		9064F44FEB32469CB4C624A1 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		962E0939F7614AC1A5E13D51 /* libBugsnagReactNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBugsnagReactNative.a; sourceTree = "<group>"; };
 		A21B1442706C4715B2563279 /* Georgia.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Georgia.ttf; path = "../node_modules/native-base/Fonts/Georgia.ttf"; sourceTree = "<group>"; };
+		A80AE64D3BD741F490BF87CB /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		BD9DCA5508664A7BA7A02D3A /* BugsnagReactNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BugsnagReactNative.xcodeproj; path = "../node_modules/bugsnag-react-native/cocoa/BugsnagReactNative.xcodeproj"; sourceTree = "<group>"; };
 		C106A85797B8497B81009383 /* Andale Mono.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Andale Mono.ttf"; path = "../node_modules/native-base/Fonts/Andale Mono.ttf"; sourceTree = "<group>"; };
 		C7FCDE8656A043C392E80A2B /* Comic Sans MS.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comic Sans MS.ttf"; path = "../node_modules/native-base/Fonts/Comic Sans MS.ttf"; sourceTree = "<group>"; };
 		CDD67852D05B416FB7C81D66 /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../node_modules/native-base/Fonts/Times New Roman.ttf"; sourceTree = "<group>"; };
@@ -257,6 +269,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EEF3DE4218C42C78E53FD3B /* libz.tbd in Frameworks */,
+				A6E760F89C504EDC8CACF769 /* libBugsnagReactNative.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -411,6 +425,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		77304FFFE43D4642A44B79A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A80AE64D3BD741F490BF87CB /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +457,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				9064F44FEB32469CB4C624A1 /* RNVectorIcons.xcodeproj */,
+				BD9DCA5508664A7BA7A02D3A /* BugsnagReactNative.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -456,6 +479,7 @@
 				00E356EF1AD99517003FC87E /* LifeApiTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				30C10FB5E6A245D4A5B98F7B /* Resources */,
+				77304FFFE43D4642A44B79A8 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -466,6 +490,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* LifeApi.app */,
 				00E356EE1AD99517003FC87E /* LifeApiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91AA432F1E0B6C6400D48D4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91AA43331E0B6C6400D48D4B /* libBugsnagReactNative.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -523,7 +555,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 810;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -548,6 +580,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 91AA432F1E0B6C6400D48D4B /* Products */;
+					ProjectRef = BD9DCA5508664A7BA7A02D3A /* BugsnagReactNative.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -688,6 +724,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		91AA43331E0B6C6400D48D4B /* libBugsnagReactNative.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBugsnagReactNative.a;
+			remoteRef = 91AA43321E0B6C6400D48D4B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		91D98C5F1DF37DDE00D97C5B /* libRCTImage-tvOS.a */ = {
@@ -859,6 +902,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -877,6 +921,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -892,6 +937,10 @@
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = LifeApi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -910,6 +959,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = LifeApi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -967,6 +1020,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1014,6 +1068,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
