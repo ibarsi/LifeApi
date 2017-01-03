@@ -1,6 +1,9 @@
 # Project
 config.json
 
+# Build
+/.vscode/.react/index.ios.*
+
 # OSX
 #
 .DS_Store
