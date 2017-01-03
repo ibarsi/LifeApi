@@ -119471,7 +119471,7 @@ this.setState({
 loading:true});
 
 
-this._getTodaysDrinks().
+_getTodaysDrinks().
 then(function(drinks){
 var today=(0,_moment2.default)().startOf('day');
 
@@ -119487,13 +119487,6 @@ catch(function(exception){return _logger_helper2.default.error('Crap!','Server\'
 
 {
 
-}},{key:'_getTodaysDrinks',value:function _getTodaysDrinks()
-
-
-
-{
-return _request_helper2.default.get(''+_config2.default.api_root+_config2.default.api_drinks).
-then(function(response){return response.body;});
 }},{key:'_postDrink',value:function _postDrink()
 
 {var _this3=this;
@@ -119539,37 +119532,6 @@ catch(function(exception){return _logger_helper2.default.error('Crap!','Server\'
 
 
 
-}},{key:'_setDrinkBadgeStyle',value:function _setDrinkBadgeStyle(
-
-drink_count){
-var badge_styles={};
-
-if(drink_count<=0){
-badge_styles={
-fontSize:20,
-color:'black'};
-
-}else
-if(drink_count<=3){
-badge_styles={
-fontSize:30,
-color:'green'};
-
-}else
-if(drink_count<=6){
-badge_styles={
-fontSize:40,
-color:'orange'};
-
-}else
-{
-badge_styles={
-fontSize:50,
-color:'red'};
-
-}
-
-return badge_styles;
 }},{key:'render',value:function render()
 
 {var _this5=this;
@@ -119599,7 +119561,7 @@ _react2.default.createElement(_nativeBase.Text,{style:styles.drink_count_label},
 this.state.loading?
 _react2.default.createElement(_nativeBase.Spinner,{color:'blue'}):
 
-_react2.default.createElement(_nativeBase.Text,{style:[styles.drink_count_value,this._setDrinkBadgeStyle(this.state.todays_drinks)]},
+_react2.default.createElement(_nativeBase.Text,{style:[styles.drink_count_value,_setDrinkBadgeStyle(this.state.todays_drinks)]},
 this.state.todays_drinks)),
 
 
@@ -119640,8 +119602,47 @@ remove_button:{
 position:'absolute',
 bottom:0,
 left:0,
-right:0}});exports.default=
+right:0}});
 
+
+
+
+
+function _getTodaysDrinks(){
+return _request_helper2.default.get(''+_config2.default.api_root+_config2.default.api_drinks).
+then(function(response){return response.body;});
+}
+
+function _setDrinkBadgeStyle(drink_count){
+var badge_styles={};
+
+if(drink_count<=0){
+badge_styles={
+fontSize:20,
+color:'black'};
+
+}else
+if(drink_count<=3){
+badge_styles={
+fontSize:40,
+color:'green'};
+
+}else
+if(drink_count<=6){
+badge_styles={
+fontSize:60,
+color:'orange'};
+
+}else
+{
+badge_styles={
+fontSize:80,
+color:'red'};
+
+}
+
+return badge_styles;
+}exports.default=
 
 
 Drinks;

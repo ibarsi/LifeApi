@@ -30,7 +30,7 @@ class Drinks extends Component {
             loading: true
         });
 
-        this._getTodaysDrinks()
+        _getTodaysDrinks()
             .then(drinks => {
                 let today = moment().startOf('day');
 
@@ -46,13 +46,6 @@ class Drinks extends Component {
 
     componentWillUnmount() {
          // TODO: Would be nice if AJAX request could be aborted on dismount.
-    }
-
-    // PRIVATE
-
-    _getTodaysDrinks() {
-        return request.get(`${config.api_root}${config.api_drinks}`)
-            .then(response => response.body);
     }
 
     _postDrink() {
@@ -100,37 +93,6 @@ class Drinks extends Component {
         );
     }
 
-    _setDrinkBadgeStyle(drink_count) {
-        let badge_styles = {};
-
-        if (drink_count <= 0) {
-            badge_styles = {
-                fontSize: 20,
-                color: 'black'
-            };
-        }
-        else if (drink_count <= 3) {
-            badge_styles = {
-                fontSize: 30,
-                color: 'green'
-            };
-        }
-        else if (drink_count <= 6) {
-            badge_styles = {
-                fontSize: 40,
-                color: 'orange'
-            };
-        }
-        else {
-            badge_styles = {
-                fontSize: 50,
-                color: 'red'
-            };
-        }
-
-        return badge_styles;
-    }
-
     render() {
         return (
             <Container>
@@ -158,7 +120,7 @@ class Drinks extends Component {
                     { this.state.loading ?
                         <Spinner color="blue" />
                         :
-                        <Text style={ [styles.drink_count_value, this._setDrinkBadgeStyle(this.state.todays_drinks)] }>
+                        <Text style={ [ styles.drink_count_value, _setDrinkBadgeStyle(this.state.todays_drinks) ] }>
                             { this.state.todays_drinks }
                         </Text>
                     }
@@ -202,5 +164,44 @@ const styles = StyleSheet.create({
         right: 0
     }
 });
+
+// PRIVATE
+
+function _getTodaysDrinks() {
+    return request.get(`${config.api_root}${config.api_drinks}`)
+        .then(response => response.body);
+}
+
+function _setDrinkBadgeStyle(drink_count) {
+    let badge_styles = {};
+
+    if (drink_count <= 0) {
+        badge_styles = {
+            fontSize: 30,
+            color: 'black'
+        };
+    }
+    else if (drink_count <= 3) {
+        badge_styles = {
+            fontSize: 40,
+            color: 'green'
+        };
+    }
+    else if (drink_count <= 6) {
+        badge_styles = {
+            fontSize: 60,
+            color: 'orange'
+        };
+    }
+    else {
+        badge_styles = {
+            fontSize: 80,
+            color: 'red'
+        };
+    }
+
+    return badge_styles;
+}
+
 
 export default Drinks;
