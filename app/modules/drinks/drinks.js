@@ -15,31 +15,6 @@ import request from '../../helpers/request_helper';
 import { delay } from '../../helpers/promise_helper';
 import config from '../../../config.json';
 
-const styles = StyleSheet.create({
-    drink_button: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white'
-    },
-    drink_count_label: {
-        paddingTop: 20,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 15
-    },
-    drink_count_value: {
-        paddingTop: 80,
-        textAlign: 'center',
-        fontWeight: 'bold'
-    },
-    remove_button: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0
-    }
-});
-
 class Drinks extends Component {
     constructor(props) {
         super(props);
@@ -74,31 +49,25 @@ class Drinks extends Component {
     }
 
     // PRIVATE
+
     _getTodaysDrinks() {
         return request.get(`${config.api_root}${config.api_drinks}`)
             .then(response => response.body);
     }
 
     _postDrink() {
-        if (!__DEV__) {
-            this.setState({
-                loading: true
-            });
+        this.setState({
+            loading: true
+        });
 
-            Promise.all([request.post(`${config.api_root}${config.api_drinks}`), delay(500)])
-                .then(() => {
-                    this.setState({
-                        todays_drinks: this.state.todays_drinks + 1,
-                        loading: false
-                    });
-                })
-                .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
-        }
-        else {
-            this.setState({
-                todays_drinks: this.state.todays_drinks + 1
-            });
-        }
+        Promise.all([ request.post(`${config.api_root}${config.api_drinks}`), delay(500) ])
+            .then(() => {
+                this.setState({
+                    todays_drinks: this.state.todays_drinks + 1,
+                    loading: false
+                });
+            })
+            .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
     }
 
     _removeDrink() {
@@ -113,25 +82,18 @@ class Drinks extends Component {
                 {
                     text: 'OK',
                     onPress: () => {
-                        if (!__DEV__ && this.state.todays_drinks > 0) {
-                            this.setState({
-                                loading: true
-                            });
+                        this.setState({
+                            loading: true
+                        });
 
-                            Promise.all([request.del(`${config.api_root}${config.api_drinks}`), delay(500)])
-                                .then(() => {
-                                    this.setState({
-                                        todays_drinks: this.state.todays_drinks - 1,
-                                        loading: false
-                                    });
-                                })
-                                .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
-                        }
-                        else if (this.state.todays_drinks > 0) {
-                            this.setState({
-                                todays_drinks: this.state.todays_drinks - 1
-                            });
-                        }
+                        Promise.all([ request.del(`${config.api_root}${config.api_drinks}`), delay(500) ])
+                            .then(() => {
+                                this.setState({
+                                    todays_drinks: this.state.todays_drinks - 1,
+                                    loading: false
+                                });
+                            })
+                            .catch(exception => logger.error('Crap!', 'Server\'s dead, go home and fix it.', exception));
                     }
                 }
             ]
@@ -215,5 +177,30 @@ class Drinks extends Component {
 Drinks.propTypes = {
     navigator: PropTypes.object.isRequired
 };
+
+const styles = StyleSheet.create({
+    drink_button: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    drink_count_label: {
+        paddingTop: 20,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 15
+    },
+    drink_count_value: {
+        paddingTop: 80,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    remove_button: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0
+    }
+});
 
 export default Drinks;
