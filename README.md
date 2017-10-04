@@ -1,3 +1,6 @@
+# DISCONTINUED
+This was a fun side project that taught me a few things, but ultimately I decided to invest my time in other endeavours.
+
 ## README ##
 
 This mobile React Native based app is part of a collection of software for a personal side project, inspired by [Jane Kim](http://janekim.me/)'s own project by the same name, aimed at tracking different aspects of my personal life.
